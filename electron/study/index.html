@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frec</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body >
+    <form id="input-form" class="sound" style="position: relative">
+        <input required maxlength="16" type="text" name="input" id="input" class="input" placeholder="What do you want to send?">
+        <button id="input-button">send</button>
+        <p id="asccierror" class="hidden">Cannot be converted to ASCII code</p>
+    </form>
+    <div class="send-form" style="position: absolute">
+        <p class="send"></p>
+        <button class="resend" >resend</button>
+    </div>
+    
+    <script src="./js/app.js"></script>
+</body>
+</html>

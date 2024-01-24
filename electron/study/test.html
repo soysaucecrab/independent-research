@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OscillatorNode</title>
+</head>
+<body>
+    <!-- 재생/정지 버튼 -->
+    <button id="btn">재생/정지</button>
+    
+    <!-- 파형 설정 raido -->
+    <input type="radio" name="wave" id="wave_sine" class="radio_wave" checked>
+    <label for="wave_sine">Sine파</label>
+    <input type="radio" name="wave" id="wave_square" class="radio_wave">
+    <label for="wave_square">square파</label>
+    <input type="radio" name="wave" id="wave_sawtooth" class="radio_wave">
+    <label for="wave_sawtooth">sawtooth파</label>
+    <input type="radio" name="wave" id="wave_triangle" class="radio_wave">
+    <label for="wave_triangle">triangle파</label>
+
+    <br><br>
+    <!-- 주파수 조정 슬라이드바 -->
+    <label for="bar_frequency">주파수 조정</label>
+    <input type="range" name="bar_frequency" id="bar_frequency" min="1" max="2000" value="440">
+    <p>현재 주파수: <span id="span_frequency">440</span> Hz</p>
+
+</body>
+
+<script>
+    // 1. AudioContext 생성
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    // 2. 소스 Node(OscillatorNode) 변수 생성
+    let oscillatorNode = null;
+    
+    // 3. 작업Node(GainNode: 볼륨 설정) 생성: 볼륨을 0.5로 설정 (0~1 사이)
+    const gainNode = audioContext.createGain();
+    gainNode.gain.value = 0.5;
+
+    // 재생여부 변수
+    let isPlaying = false; 
+    
+    // 재생/정지 버튼 이벤트
+    document.getElementById("btn").onclick = (event)=>{
+        
+        // 사용자 제스처가 있어야만 audioContext가 작동하기 때문에, 여기서 재가동해준다.
+        audioContext.resume(); 
+     
+        if(!isPlaying){
+            // OscillatorNode는 1회만 재생 가능하기 때문에
+            // 새로 재생할 때마다 새로 OscillatorNode를 생성해주어야 한다.
+            oscillatorNode = audioContext.createOscillator();
+
+            // 오디오 그래프 연결
+            oscillatorNode.connect(gainNode).connect(audioContext.destination);
+            
+            // 재생
+            oscillatorNode.start();
+            isPlaying = true;
+        }else{
+            // 정지
+            oscillatorNode.stop();
+            isPlaying = false;
+        }
+    }
+
+    // 주파수 조정 이벤트
+    document.getElementById("bar_frequency").oninput = (event)=>{
+        const inputVolume = parseInt(event.currentTarget.value); // 0~1사이로 변환
+        oscillatorNode.frequency.value = inputVolume;
+
+        // 현재 주파수 표시
+        document.getElementById("span_frequency").textContent = oscillatorNode.frequency.value;
+    }
+
+    // 파형 조정 이벤트
+    document.querySelectorAll("input.radio_wave").forEach((el, idx) => {
+        el.addEventListener("click", (event)=>{
+            switch (idx) {
+                case 0:
+                    oscillatorNode.type = "sine";
+                    break;
+                case 1:
+                    oscillatorNode.type = "square";
+                    break;
+                case 2:
+                    oscillatorNode.type = "sawtooth";
+                    break;
+                case 3:
+                    oscillatorNode.type = "triangle";
+                    break;
+                default:
+                    oscillatorNode.type = "sine";
+                    break;
+            }
+        })
+    });
+
+
+</script>
+</html>
+출처: https://curryyou.tistory.com/453 [카레유:티스토리]
