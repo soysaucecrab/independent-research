@@ -10,7 +10,7 @@ import javax.sound.sampled.SourceDataLine;
 public class Audio {
 	public static byte[] cal(double[] freq, AudioFormat format, int n) {
 		double[] frequencies =freq;
-	    double duration = 1; // 출력할 시간(초) 설정
+	    double duration = 0.1; // 출력할 시간(초) 설정
 	    int numOfFrequencies = frequencies.length;
 	    byte[][] buffers = new byte[numOfFrequencies][(int) (format.getSampleRate() * duration)];
 	    for (int j = 0; j < numOfFrequencies; j++) {
@@ -63,6 +63,11 @@ public class Audio {
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         }
+	}
+	
+	public static void play() {
+		double[][] frequency = {{4000.0, 5000.0, 6000.0, 7000.0, 8000.0, 9000.0, 10000.0},{11000.0, 5000.0, 3000.0, 7000.0, 8000.0, 9000.0, 10000.0},{12000.0, 13000.0, 14000.0, 11000.0, 8000.0, 9000.0, 10000.0}}; // 여러 주파수 값 배열로 선언
+    	sound(frequency,1);
 	}
 	
     public static void main(String[] args) {

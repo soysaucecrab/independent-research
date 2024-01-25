@@ -11,7 +11,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Audio audio = new Audio();
+		
 		new Sound();
-		new Audio();
+		
+		audio.play();
 	}
 }
