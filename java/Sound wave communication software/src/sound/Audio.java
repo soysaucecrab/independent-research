@@ -10,7 +10,7 @@ import javax.sound.sampled.SourceDataLine;
 public class Audio {
 	public static byte[] cal(double[] freq, AudioFormat format, int n) {
 		double[] frequencies =freq;
-	    double duration = 0.6; // 출력할 시간(초) 설정
+	    double duration = 1; // 출력할 시간(초) 설정
 	    int numOfFrequencies = frequencies.length;
 	    byte[][] buffers = new byte[numOfFrequencies][(int) (format.getSampleRate() * duration)];
 	    for (int j = 0; j < numOfFrequencies; j++) {
@@ -56,7 +56,7 @@ public class Audio {
             for (int k = 0; k < buffer.length; k++) {
                 line.write(buffer[k], 0, buffer[k].length);
                 System.out.println(buffer[k]);
-//                
+                
             }
             line.drain();
             line.close();
