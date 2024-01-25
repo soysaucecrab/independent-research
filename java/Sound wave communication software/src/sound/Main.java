@@ -10,11 +10,10 @@ public class Main {
 	public static final int SCREEN_HEIGHT = 720;
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Audio audio = new Audio();
 		
 		new Sound();
 		
-		audio.play();
+		
 	}
 }
