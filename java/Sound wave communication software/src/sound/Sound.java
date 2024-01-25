@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Sound extends JFrame {
-
+	
 	private Image screenImage;
 	private Graphics screenGraphic;
 
@@ -83,7 +83,6 @@ public class Sound extends JFrame {
 		
 		
 		//input
-
 		
 		//music
 //		Music introMusic = new Music("introMusic.mp3", true);
