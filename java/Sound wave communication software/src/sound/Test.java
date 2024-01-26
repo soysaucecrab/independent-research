@@ -25,7 +25,7 @@ public class Test extends JFrame implements ActionListener{
       setLayout(new FlowLayout());
       
       //문자열을 입력할수 있는 UI 
-      inputMsg=new JTextField(10);
+      inputMsg=new JTextField(30);
 
       
       //전송버튼
@@ -38,15 +38,16 @@ public class Test extends JFrame implements ActionListener{
       JButton deleteBtn = new JButton("삭제");
       deleteBtn.setActionCommand("delete");
       deleteBtn.addActionListener(this);
-
+      
       //패널 객체를 생성해서
       JPanel panel = new JPanel();
       //패널에 UI를 추가하고
       panel.add(inputMsg);
       panel.add(sendBtn);
       panel.add(deleteBtn);
+      
       //패널 통채로 프레임에 추가하기
-      add(panel);
+      add(panel,"Center");
       
       setVisible(true);
    }
@@ -78,7 +79,8 @@ public class Test extends JFrame implements ActionListener{
     		  clear();
     	  }
     	  if(cl==1) {
-    		  JOptionPane.showMessageDialog(this, "complete");
+    		  JOptionPane.showMessageDialog(this, "sended");
+    		  clear();
     	  }
       }else if (command.equals("delete")) {
     	  //빈 문자열을 넣어주어서 삭제하기

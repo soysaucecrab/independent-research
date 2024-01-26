@@ -1,5 +1,7 @@
 package sound;
 
+import java.security.PublicKey;
+
 public class Cal {
 	
 	private double[][] frequencies = {};

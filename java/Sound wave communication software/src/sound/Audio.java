@@ -45,7 +45,6 @@ public class Audio {
             SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
             line.open(format);
             // 주파수 생성
-            System.out.println(freq.length);
             byte[][] buffer = {};
             buffer = new byte[freq.length][7];
             for(int i=0;i<freq.length;i++) {
@@ -55,7 +54,6 @@ public class Audio {
             line.start();
             for (int k = 0; k < buffer.length; k++) {
                 line.write(buffer[k], 0, buffer[k].length);
-//                System.out.println(buffer[k]);
                 
             }
             line.drain();
