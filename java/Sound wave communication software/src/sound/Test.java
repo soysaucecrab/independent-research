@@ -65,12 +65,27 @@ public class Test extends JFrame implements ActionListener{
          //JTextField에 입력한 문자열 읽어오기
     	  String msg = inputMsg.getText();
     	  Cal cal = new Cal();
-    	  cal.calculate(msg);
-    	  
-//    	  JOptionPane.showMessageDialog(this, msg);
+    	  int cl=3;
+    	  if(msg.length()!=0) {
+    		  cl = cal.calculate(msg);
+    		  
+    	  }
+    	  else {
+    		  JOptionPane.showMessageDialog(this, "write something");
+		}
+    	  if(cl==0) {
+    		  JOptionPane.showMessageDialog(this, "It cannot be converted to ASCII code");
+    		  clear();
+    	  }
+    	  if(cl==1) {
+    		  JOptionPane.showMessageDialog(this, "complete");
+    	  }
       }else if (command.equals("delete")) {
     	  //빈 문자열을 넣어주어서 삭제하기
-    	  inputMsg.setText("");
+    	  clear();
       }
+   }
+   public void clear() {
+	   inputMsg.setText("");
    }
 }
