@@ -63,7 +63,7 @@ public class Audio {
         }
 	}
 	
-	public static void play(double[][] frequency) {
+	public void play(double[][] frequency) {
 		sound(frequency,1);
 	}
 	

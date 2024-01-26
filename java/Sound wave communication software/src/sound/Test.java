@@ -1,7 +1,5 @@
 package sound;
 
-import java.awt.BorderLayout;
-
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Test extends JFrame implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//필드 정의하기
 	private JTextField inputMsg;
 	
