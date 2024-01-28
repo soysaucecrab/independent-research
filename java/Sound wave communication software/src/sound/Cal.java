@@ -35,7 +35,7 @@ public class Cal {
 					index++;
 				}
 			}
-			frequencies[i][7]=13000.0;
+			frequencies[i][7]=15000.0;
 		}
 		Audio audio = new Audio();
 		audio.play(frequencies);
